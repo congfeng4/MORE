@@ -1,4 +1,4 @@
-# MORE：a multi-omics hypergraph integration network for biomedical data classification and biomarker identification
+# MORE：a multi-omics data-driven hypergraph integration network for biomedical data classification and biomarker identification
 ![figure.png](https://github.com/Wangyuhanxx/MORE/blob/main/model.png)
 ## Overview of MORE
 MORE is mainly composed of two modules: MOHE for omics-specific knowledge learning and MOSA for multi-omics integration. Preprocessing is first performed on each omics modality to remove noise and redundant features. A comprehensive hyperedge group is constructed by extensively exploring the correlations within and across modalities. The hypergraph is generated from the comprehensive hyperedge group. Subsequently, the hypergraph, along with the features from each omics modality, is inputted into the MOHE module to extract the omics-specific features. Eventually, the MOSA module is employed to adaptatively aggregate valuable information across modalities for final prediction. 
