@@ -1,0 +1,89 @@
+/usr/local/bin/python3.12 /Users/fengcong/Desktop/0825-course/Guided Study/Code/MORE/Code/main_biomarker.py
+Module E1 loaded!
+Module C1 loaded!
+Module E2 loaded!
+Module C2 loaded!
+Module E3 loaded!
+Module C3 loaded!
+Module C loaded!
+Module E1 loaded!
+Module C1 loaded!
+Module E2 loaded!
+Module C2 loaded!
+Module E3 loaded!
+Module C3 loaded!
+Module C loaded!
+Module E1 loaded!
+Module C1 loaded!
+Module E2 loaded!
+Module C2 loaded!
+Module E3 loaded!
+Module C3 loaded!
+Module C loaded!
+Module E1 loaded!
+Module C1 loaded!
+Module E2 loaded!
+Module C2 loaded!
+Module E3 loaded!
+Module C3 loaded!
+Module C loaded!
+Module E1 loaded!
+Module C1 loaded!
+Module E2 loaded!
+Module C2 loaded!
+Module E3 loaded!
+Module C3 loaded!
+Module C loaded!
+Rank	Feature name
+1	ENSG00000168743.8
+2	ENSG00000105643.3
+3	ENSG00000242349.1
+4	ENSG00000121966.6
+5	ENSG00000117266.11
+6	cg22518733
+7	ENSG00000155980.6
+8	ENSG00000204219.5
+9	ENSG00000249436.1
+10	ENSG00000235501.1
+11	cg08418111
+12	cg17385448
+13	cg04428453
+14	ENSG00000198624.8
+15	ENSG00000053702.10
+16	cg14847483
+17	cg27091787
+18	ENSG00000260328.1
+19	cg25736482
+20	ENSG00000020577.9
+21	ENSG00000177025.2
+22	ENSG00000166508.13
+23	ENSG00000236609.3
+24	ENSG00000151552.7
+25	ENSG00000233123.1
+26	ENSG00000185499.11
+27	ENSG00000254211.1
+28	hsa-miR-33a
+29	ENSG00000142765.12
+30	ENSG00000071054.10
+31	cg17237063
+32	cg21643191
+33	ENSG00000134294.9
+34	ENSG00000117115.8
+35	cg22398616
+36	ENSG00000227544.2
+37	ENSG00000157978.6
+38	cg07232688
+39	cg05050341
+40	cg08409225
+41	ENSG00000116786.7
+42	cg02008416
+43	cg14387505
+44	hcmv-miR-UL70-3p
+45	cg18059933
+46	ENSG00000099194.4
+47	ENSG00000248714.2
+48	ENSG00000111181.8
+49	ENSG00000084453.12
+50	ENSG00000182310.7
+
+进程已结束，退出代码为 0
