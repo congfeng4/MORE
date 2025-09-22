@@ -1,7 +1,7 @@
 import argparse
 
-def parameter_parser():
 
+def parameter_parser():
     parser = argparse.ArgumentParser(description="Run MORE.")
 
     parser.add_argument('--dropout', type=float, default=0.1,
@@ -15,4 +15,3 @@ def parameter_parser():
                         help='Number of omics.')
 
     return parser.parse_args()
-

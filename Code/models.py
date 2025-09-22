@@ -7,13 +7,15 @@ import numpy as np
 import random
 import os
 from torch.nn.parameter import Parameter
+
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+
 def xavier_init(m):
     if type(m) == nn.Linear:
         nn.init.xavier_normal_(m.weight)
         if m.bias is not None:
-           m.bias.data.fill_(0.0)
-           
+            m.bias.data.fill_(0.0)
 
 
 class Attention(nn.Module):
@@ -32,6 +34,7 @@ class Attention(nn.Module):
         output = torch.matmul(attn, v)
 
         return output, attn, v
+
 
 class VariLengthInputLayer(nn.Module):
     def __init__(self, modal_num, num_class, input_data_dims, d_k, d_v, n_head, dropout):
@@ -59,7 +62,7 @@ class VariLengthInputLayer(nn.Module):
         self.fc = nn.Linear(n_head * d_v, n_head * d_v)
         self.dropout = nn.Dropout(dropout)
         self.layer_norm = nn.LayerNorm(n_head * d_v, eps=1e-6)
-        self.model = nn.Sequential(nn.Linear(self.modal_num*self.n_head*self.d_k, num_class))
+        self.model = nn.Sequential(nn.Linear(self.modal_num * self.n_head * self.d_k, num_class))
         self.model.apply(xavier_init)
 
     def forward(self, input_data, mask=None):
@@ -95,12 +98,12 @@ class VariLengthInputLayer(nn.Module):
         q = self.dropout(self.fc(q))
         q += residual
 
-
         q = self.layer_norm(q)
-        q = torch.reshape(q, (-1,self.modal_num*self.n_head*self.d_k))
+        q = torch.reshape(q, (-1, self.modal_num * self.n_head * self.d_k))
 
         output = self.model(q)
         return output
+
 
 class TransformerEncoder(nn.Module):
     def __init__(self, input_data_dims, hyperpm, num_class):
@@ -117,14 +120,16 @@ class TransformerEncoder(nn.Module):
         self.n_class = num_class
         self.d_out = self.d_v * self.n_head * self.modal_num
 
-        self.InputLayer = VariLengthInputLayer(self.modal_num, num_class, self.input_data_dims, self.d_k, self.d_v, self.n_head, self.dropout)
-
+        self.InputLayer = VariLengthInputLayer(self.modal_num, num_class, self.input_data_dims, self.d_k, self.d_v,
+                                               self.n_head, self.dropout)
 
     def forward(self, x):
         bs = x.size(0)
 
         output = self.InputLayer(x)
         return output
+
+
 class Classifier_1(nn.Module):
     def __init__(self, in_dim, out_dim):
         super().__init__()
@@ -134,9 +139,6 @@ class Classifier_1(nn.Module):
     def forward(self, x):
         x = self.clf(x)
         return x
-
-
-
 
 
 class HGNN_conv(nn.Module):
@@ -164,6 +166,8 @@ class HGNN_conv(nn.Module):
             x = x + self.bias
         x = G.matmul(x)
         return x
+
+
 class HGNN(nn.Module):
     def __init__(self, in_ch, n_class, n_hid, dropout=0.5):
         super(HGNN, self).__init__()
@@ -171,21 +175,20 @@ class HGNN(nn.Module):
         self.hgc1 = HGNN_conv(in_ch, n_hid[0])
         self.hgc2 = HGNN_conv(n_hid[0], n_hid[1])
 
-
-
     def forward(self, x, G):
         x = self.hgc1(x, G)
-        x = F.leaky_relu(x,0.25)
+        x = F.leaky_relu(x, 0.25)
         x = F.dropout(x, self.dropout)
         x = self.hgc2(x, G)
         x = F.leaky_relu(x, 0.25)
         return x
 
+
 def init_model_dict(input_data_dims, hyperpm, num_view, num_class, dim_list, dim_he_list, dim_hc, gcn_dopout=0.5):
     model_dict = {}
     for i in range(num_view):
-        model_dict["E{:}".format(i+1)] = HGNN(dim_list[i], num_class, dim_he_list, gcn_dopout)
-        model_dict["C{:}".format(i+1)] = Classifier_1(dim_he_list[-1], num_class)
+        model_dict["E{:}".format(i + 1)] = HGNN(dim_list[i], num_class, dim_he_list, gcn_dopout)
+        model_dict["C{:}".format(i + 1)] = Classifier_1(dim_he_list[-1], num_class)
     if num_view >= 2:
         model_dict["C"] = TransformerEncoder(input_data_dims, hyperpm, num_class)
     return model_dict
@@ -194,9 +197,9 @@ def init_model_dict(input_data_dims, hyperpm, num_view, num_class, dim_list, dim
 def init_optim(num_view, model_dict, lr_e, lr_c):
     optim_dict = {}
     for i in range(num_view):
-        optim_dict["C{:}".format(i+1)] = torch.optim.Adam(
-                list(model_dict["E{:}".format(i+1)].parameters())+list(model_dict["C{:}".format(i+1)].parameters()), 
-                lr=lr_e)
+        optim_dict["C{:}".format(i + 1)] = torch.optim.Adam(
+            list(model_dict["E{:}".format(i + 1)].parameters()) + list(model_dict["C{:}".format(i + 1)].parameters()),
+            lr=lr_e)
     if num_view >= 2:
         optim_dict["C"] = torch.optim.Adam(model_dict["C"].parameters(), lr=lr_c)
     return optim_dict

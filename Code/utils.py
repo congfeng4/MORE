@@ -1,6 +1,7 @@
 import os
 import numpy as np
 import torch
+
 cuda = True if torch.cuda.is_available() else False
 
 
@@ -9,6 +10,7 @@ def one_hot_tensor(y, num_dim):
     y_onehot.scatter_(1, y.view(-1, 1), 1)
 
     return y_onehot
+
 
 def cal_sample_weight(labels, num_class, use_sample_weight=True):
     if not use_sample_weight:
@@ -22,8 +24,9 @@ def cal_sample_weight(labels, num_class, use_sample_weight=True):
         sample_weight[np.where(labels == i)[0]] = count[i] / np.sum(count)
 
     return sample_weight
-def Eu_dis(x):
 
+
+def Eu_dis(x):
     x = x.cpu().numpy()
     x = np.mat(x)
     aa = np.sum(np.multiply(x, x), 1)
@@ -36,11 +39,7 @@ def Eu_dis(x):
     return dist_mat
 
 
-
-
-
 def hyperedge_concat(*H_list):
-
     H = None
     for h in H_list:
 
@@ -53,10 +52,8 @@ def hyperedge_concat(*H_list):
             else:
                 if type(h) != list:
 
-
                     H = np.hstack((H, h))
                 else:
-
 
                     tmp = []
                     for a, b in zip(H, h):
@@ -67,7 +64,6 @@ def hyperedge_concat(*H_list):
 
 
 def generate_G_from_H(H, variable_weight=False):
-
     if type(H) != list:
         return _generate_G_from_H(H, variable_weight)
     else:
@@ -78,7 +74,6 @@ def generate_G_from_H(H, variable_weight=False):
 
 
 def _generate_G_from_H(H, variable_weight=False):
-
     H = np.array(H)
     n_edge = H.shape[1]
     # the weight of the hyperedge
@@ -105,7 +100,6 @@ def _generate_G_from_H(H, variable_weight=False):
 
 
 def construct_H_with_KNN_from_distance(dis_mat, k_neig, is_probH=True, m_prob=1):
-
     n_obj = dis_mat.shape[0]
 
     n_edge = n_obj
@@ -127,9 +121,6 @@ def construct_H_with_KNN_from_distance(dis_mat, k_neig, is_probH=True, m_prob=1)
 
 
 def construct_H_with_KNN(X, K_neigs, split_diff_scale=False, is_probH=True, m_prob=1):
-
-
-
     if type(K_neigs) == int:
         K_neigs = [K_neigs]
 
@@ -138,9 +129,6 @@ def construct_H_with_KNN(X, K_neigs, split_diff_scale=False, is_probH=True, m_pr
     for k_neig in K_neigs:
 
         H_tmp = construct_H_with_KNN_from_distance(dis_mat, k_neig, is_probH, m_prob)
-
-
-
 
         if not split_diff_scale:
             H = hyperedge_concat(H_tmp)
