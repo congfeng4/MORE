@@ -1,0 +1,162 @@
+/usr/local/bin/python3.12 /Users/fengcong/Desktop/0825-course/Guided Study/Code/MORE/Code/main_MORE.py
+
+Pretrain MOHE...
+
+Training...
+
+Test: Epoch 0
+Test ACC: 0.330
+Test F1: 0.458
+Test AUC: 0.285
+
+Test: Epoch 50
+Test ACC: 0.755
+Test F1: 0.764
+Test AUC: 0.840
+
+Test: Epoch 100
+Test ACC: 0.792
+Test F1: 0.820
+Test AUC: 0.870
+
+Test: Epoch 150
+Test ACC: 0.774
+Test F1: 0.810
+Test AUC: 0.848
+
+Test: Epoch 200
+Test ACC: 0.774
+Test F1: 0.774
+Test AUC: 0.844
+
+Test: Epoch 250
+Test ACC: 0.736
+Test F1: 0.767
+Test AUC: 0.847
+
+Test: Epoch 300
+Test ACC: 0.783
+Test F1: 0.807
+Test AUC: 0.856
+
+Test: Epoch 350
+Test ACC: 0.660
+Test F1: 0.739
+Test AUC: 0.874
+
+Test: Epoch 400
+Test ACC: 0.792
+Test F1: 0.810
+Test AUC: 0.874
+
+Test: Epoch 450
+Test ACC: 0.774
+Test F1: 0.793
+Test AUC: 0.841
+
+Test: Epoch 500
+Test ACC: 0.774
+Test F1: 0.774
+Test AUC: 0.863
+
+Test: Epoch 550
+Test ACC: 0.745
+Test F1: 0.769
+Test AUC: 0.835
+
+Test: Epoch 600
+Test ACC: 0.755
+Test F1: 0.780
+Test AUC: 0.852
+
+Test: Epoch 650
+Test ACC: 0.698
+Test F1: 0.754
+Test AUC: 0.846
+
+Test: Epoch 700
+Test ACC: 0.783
+Test F1: 0.800
+Test AUC: 0.838
+
+Test: Epoch 750
+Test ACC: 0.802
+Test F1: 0.824
+Test AUC: 0.860
+
+Test: Epoch 800
+Test ACC: 0.736
+Test F1: 0.781
+Test AUC: 0.851
+
+Test: Epoch 850
+Test ACC: 0.726
+Test F1: 0.756
+Test AUC: 0.821
+
+Test: Epoch 900
+Test ACC: 0.745
+Test F1: 0.743
+Test AUC: 0.847
+
+Test: Epoch 950
+Test ACC: 0.774
+Test F1: 0.806
+Test AUC: 0.862
+
+Test: Epoch 1000
+Test ACC: 0.679
+Test F1: 0.757
+Test AUC: 0.863
+
+Test: Epoch 1050
+Test ACC: 0.783
+Test F1: 0.803
+Test AUC: 0.840
+
+Test: Epoch 1100
+Test ACC: 0.764
+Test F1: 0.783
+Test AUC: 0.858
+
+Test: Epoch 1150
+Test ACC: 0.698
+Test F1: 0.761
+Test AUC: 0.865
+
+Test: Epoch 1200
+Test ACC: 0.670
+Test F1: 0.748
+Test AUC: 0.814
+
+Test: Epoch 1250
+Test ACC: 0.698
+Test F1: 0.758
+Test AUC: 0.826
+
+Test: Epoch 1300
+Test ACC: 0.651
+Test F1: 0.730
+Test AUC: 0.855
+
+Test: Epoch 1350
+Test ACC: 0.651
+Test F1: 0.745
+Test AUC: 0.834
+
+Test: Epoch 1400
+Test ACC: 0.736
+Test F1: 0.781
+Test AUC: 0.841
+
+Test: Epoch 1450
+Test ACC: 0.717
+Test F1: 0.758
+Test AUC: 0.838
+
+Test: Epoch 1500
+Test ACC: 0.783
+Test F1: 0.800
+Test AUC: 0.858
+
+进程已结束，退出代码为 0

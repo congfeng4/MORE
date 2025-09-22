@@ -159,7 +159,7 @@ class HGNN_conv(nn.Module):
             self.bias.data.uniform_(-stdv, stdv)
 
     def forward(self, x: torch.Tensor, G: torch.Tensor):
-        G = G.cuda()
+        G = G.to(device)
 
         x = x.matmul(self.weight)
         if self.bias is not None:
