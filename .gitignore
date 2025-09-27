@@ -4,3 +4,6 @@ higashi/Higashi_backend/.DS_Store
 .idea
 *.npy
 *.egg-info
+__pycache__
+.idea
+.run

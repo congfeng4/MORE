@@ -42,24 +42,18 @@ def Eu_dis(x):
 def hyperedge_concat(*H_list):
     H = None
     for h in H_list:
-
         if h is not None:
             # for the first H appended to fused hypergraph incidence matrix
             if H is None:
-
                 H = h
-
             else:
                 if type(h) != list:
-
                     H = np.hstack((H, h))
                 else:
-
                     tmp = []
                     for a, b in zip(H, h):
                         tmp.append(np.hstack((a, b)))
                     H = tmp
-
     return H
 
 

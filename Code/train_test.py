@@ -50,18 +50,15 @@ def gen_trte_adj_mat(data_tr_list, data_te_list, trte_idx):
     H_te = []
     for i in range(len(data_tr_list)):
         H_1 = construct_H_with_KNN(data_tr_list[i], K_neigs=3, split_diff_scale=False, is_probH=True, m_prob=1)
-
         H_tr.append(H_1)
 
         H_2 = construct_H_with_KNN(data_te_list[i], K_neigs=3, split_diff_scale=False, is_probH=True, m_prob=1)
         H_te.append(H_2)
 
     H_train = hyperedge_concat(H_tr[0], H_tr[1], H_tr[2])
-
     H_test = hyperedge_concat(H_te[0], H_te[1], H_te[2])
 
     adj_train_list = generate_G_from_H(H_train, variable_weight=False)
-
     adj_test_list = generate_G_from_H(H_test, variable_weight=False)
 
     return adj_train_list, adj_test_list
